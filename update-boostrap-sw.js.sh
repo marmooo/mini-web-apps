@@ -6,6 +6,6 @@ basedir=`pwd`
 while read line
 do
   cd ../$line && $replace
-done < test.lst
+done < all.lst
 cd $basedir
 
