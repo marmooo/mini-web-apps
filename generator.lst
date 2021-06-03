@@ -1,0 +1,8 @@
+kanji-dict/page.ejs
+kanji-dict/src/index.html
+homonym-ja/page.ejs
+homonym-ja/src/index.html
+spelling-variants-ja/page.ejs
+spelling-variants-ja/src/index.html
+shogi-beginners/layouts/*
+kifu-viewer/docs/*.html
