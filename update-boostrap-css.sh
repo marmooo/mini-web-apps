@@ -10,6 +10,7 @@ do
 done < static.lst
 cd $pwd
 
+cd $basedir
 while read line
 do
   replace="sd -s '$keywordFrom' '$keywordTo' ../$line"

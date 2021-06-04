@@ -5,7 +5,7 @@ replace="sd -s '$keywordFrom' '$keywordTo' src/sw.js"
 basedir=`pwd`
 while read line
 do
-  cd ../$line && $replace
+  cd ../$line && eval $replace
 done < all.lst
 cd $basedir
 
