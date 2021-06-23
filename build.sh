@@ -1,8 +1,8 @@
 basedir=`pwd`
 
 cd ../kanji-dict && node build.js && cd $basedir
-cd ../homonym-ja && node build.js && cd $basedir
-cd ../spelling-variants-ja && node build.js && cd $basedir
+cd ../homonym-ja && deno run --allow-read --allow-write build.js && cd $basedir
+cd ../spelling-variants-ja && deno run --allow-read --allow-write build.js && cd $basedir
 cd ../shogi-beginners && hugo --minify && cd $basedir
 cd ../photo-scanner && bash build_release.sh && cd $basedir
 
