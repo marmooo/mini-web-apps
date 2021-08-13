@@ -20,6 +20,7 @@ type-numbers
 talk-numbers
 tegaki-abc
 talk-abc
+talk-phonics
 tegaki-de-anzan
 type-de-anzan
 tegaki-100masu
@@ -30,6 +31,7 @@ hageda
 aiueo-typing
 kanji-typing
 abc-typing
+phonics-typing
 english-words-typing
 english-sentences-typing
 chess-clock
