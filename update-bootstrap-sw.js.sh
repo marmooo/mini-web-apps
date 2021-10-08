@@ -1,5 +1,5 @@
-keywordFrom='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0'
-keywordTo='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1'
+keywordFrom='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1'
+keywordTo='https://cdn.jsdelivr.net/npm/bootstrap@5.1.2'
 
 replace="sd -s '$keywordFrom' '$keywordTo' src/sw.js"
 basedir=`pwd`
