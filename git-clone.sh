@@ -2,7 +2,7 @@ basedir=`pwd`
 cd ..
 while read line
 do
-  git clone https://github.com/marmooo/$line
+  git clone git@github.com:marmooo/$line.git
 done < all.lst
 cd $basedir
 
