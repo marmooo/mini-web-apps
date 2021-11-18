@@ -1,5 +1,9 @@
 kanji-dict/page.ejs
 kanji-dict/src/index.html
+graded-vocab-ja/page.ejs
+graded-vocab-ja/src/index.html
+graded-idioms-ja/page.ejs
+graded-idioms-ja/src/index.html
 homonym-ja/page.ejs
 homonym-ja/src/index.html
 spelling-variants-ja/page.ejs
