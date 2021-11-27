@@ -1,9 +1,9 @@
 basedir=`pwd`
 
 # Dict
+cd ..
 git clone git@github.com:marmooo/graded-enja-corpus
 
-cd ..
 sudo apt install git-lfs
 git clone git@github.com:WorksApplications/SudachiDict
 cd SudachiDict
