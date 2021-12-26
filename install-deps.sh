@@ -48,6 +48,8 @@ ln -fs $dir/SudachiDict graded-vocab-ja/SudachiDict
 ln -fs $dir/SudachiDict graded-idioms-ja/SudachiDict
 ln -fs $dir/SudachiDict homonym-ja/SudachiDict
 ln -fs $dir/SudachiDict spelling-variants-ja/SudachiDict
+ln -fs $dir/SudachiDict dajare-ondoku/SudachiDict
+ln -fs $dir/SudachiDict hayakuchi-ondoku/SudachiDict
 ln -fs $dir/mecab-naist-jdic-0.6.3b-20111013 homonym-ja/mecab-naist-jdic-0.6.3b-20111013
 ln -fs $dir/mecab-naist-jdic-0.6.3b-20111013 spelling-variants-ja/mecab-naist-jdic-0.6.3b-20111013
 
