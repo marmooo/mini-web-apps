@@ -3,6 +3,10 @@ basedir=`pwd`
 # Dict
 cd ..
 git clone git@github.com:marmooo/graded-enja-corpus
+git clone git@github.com:marmooo/graded-kanji-examples
+git clone git@github.com:marmooo/yomi-dict
+git clone git@github.com:marmooo/onkun
+
 
 sudo apt install git-lfs
 git clone git@github.com:WorksApplications/SudachiDict
@@ -40,11 +44,18 @@ ln -fs $dir/graded-vocab-ja kana-sagashi/graded-vocab-ja
 ln -fs $dir/graded-vocab-ja kana-siritori/graded-vocab-ja
 ln -fs $dir/graded-vocab-ja kanji-dict/graded-vocab-ja
 ln -fs $dir/graded-vocab-ja kanji-typing/graded-vocab-ja
+ln -fs $dir/graded-vocab-ja graded-kanji-examples/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja kanji-meiro/graded-idioms-ja
 ln -fs $dir/graded-idioms-ja jukugo3-sagashi/graded-idioms-ja
 ln -fs $dir/graded-idioms-ja kanji-siritori/graded-idioms-ja
 ln -fs $dir/graded-idioms-ja kanji-dict/graded-idioms-ja
 ln -fs $dir/graded-idioms-ja kanji-typing/graded-idioms-ja
+ln -fs $dir/graded-idioms-ja graded-kanji-examples/graded-idioms-ja
+ln -fs $dir/graded-kanji-examples touch-kanji/graded-kanji-examples
+ln -fs $dir/graded-kanji-examples touch-shuji/graded-kanji-examples
+ln -fs $dir/graded-kanji-examples touch-shodo/graded-kanji-examples
+ln -fs $dir/onkun graded-kanji-examples/onkun
+ln -fs $dir/yomi-dict graded-kanji-examples/yomi-dict
 
 ln -fs $dir/nwc2010-ngrams graded-vocab-ja/nwc2010-ngrams
 ln -fs $dir/nwc2010-ngrams graded-idioms-ja/nwc2010-ngrams
