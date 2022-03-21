@@ -3,9 +3,8 @@ while read line
 do
   cd ../$line
   git add *
-  git commit -m "$1"
+  git commit -m "$2"
   git push
   sleep 10
-done < all.lst
+done < $1
 cd $basedir
-

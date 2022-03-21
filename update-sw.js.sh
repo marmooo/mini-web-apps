@@ -7,6 +7,6 @@ while read line
 do
   echo $replace
   cd ../$line && eval $replace
-done < all.lst
+done < $1
 cd $basedir
 
