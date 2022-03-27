@@ -56,6 +56,7 @@ ln -fs $dir/graded-kanji-examples touch-shuji/graded-kanji-examples
 ln -fs $dir/graded-kanji-examples touch-shodo/graded-kanji-examples
 ln -fs $dir/onkun graded-kanji-examples/onkun
 ln -fs $dir/yomi-dict graded-kanji-examples/yomi-dict
+ln -fs $dir/yomi-dict kanji-siritori/yomi-dict
 
 ln -fs $dir/nwc2010-ngrams graded-vocab-ja/nwc2010-ngrams
 ln -fs $dir/nwc2010-ngrams graded-idioms-ja/nwc2010-ngrams
