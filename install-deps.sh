@@ -29,6 +29,8 @@ xz -dv nwc2010-ngrams/word/over999/2gms/2gm-0000.xz
 xz -dv nwc2010-ngrams/word/over999/3gms/3gm-0000.xz
 xz -dv nwc2010-ngrams/word/over999/4gms/4gm-0000.xz
 xz -dv nwc2010-ngrams/word/over999/5gms/5gm-0000.xz
+xz -dv nwc2010-ngrams/word/over999/6gms/6gm-0000.xz
+xz -dv nwc2010-ngrams/word/over999/7gms/7gm-0000.xz
 
 git clone git@github.com:MosasoM/inappropriate-words-ja
 
