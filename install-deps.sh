@@ -73,5 +73,8 @@ ln -fs $dir/mecab-naist-jdic-0.6.3b-20111013 spelling-variants-ja/mecab-naist-jd
 ln -fs $dir/inappropriate-words-ja graded-vocab-ja/inappropriate-words-ja
 ln -fs $dir/inappropriate-words-ja graded-idioms-ja/inappropriate-words-ja
 
+ln -fs $dir/google-ngram-small-en speecha/google-ngram-small-en
+ln -fs $dir/google-ngram-small-en gratalk/google-ngram-small-en
+
 cd $basedir
 
