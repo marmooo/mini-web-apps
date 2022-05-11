@@ -1,7 +1,7 @@
 keywordFrom='https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.15.0/dist/tf.min.js';
 keywordTo='https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.16.0/dist/tf.min.js';
 
-replace="sd -s '$keywordFrom' '$keywordTo' \$(fdfind --type file -e js . src)"
+replace="sd -s '$keywordFrom' '$keywordTo' \$(fdfind --type file -e js .)"
 basedir=`pwd`
 while read line
 do
