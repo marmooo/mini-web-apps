@@ -2,6 +2,8 @@ timestamp=$(date '+%Y-%m-%d %H:%M')
 keywordFrom="^var CACHE_NAME.*$"
 keywordTo='var CACHE_NAME = \"$timestamp\";'
 replace="sd -f m \"$keywordFrom\" \"$keywordTo\" src/sw.js"
+replace="sd -f m \"$keywordFrom\" \"$keywordTo\" src/ja/sw.js"
+replace="sd -f m \"$keywordFrom\" \"$keywordTo\" src/en/sw.js"
 basedir=`pwd`
 while read line
 do
