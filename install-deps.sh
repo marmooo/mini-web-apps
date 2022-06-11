@@ -66,6 +66,7 @@ ln -fs $dir/SudachiDict dajare-ondoku/SudachiDict
 ln -fs $dir/SudachiDict hayakuchi-ondoku/SudachiDict
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-50on/kanjivg
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-de-kakijun/kanjivg
+ln -fs $dir/yomi-dict emoji-typing/yomi-dict
 
 # kanji-siritori
 ln -fs $dir/yomi-dict kanji-siritori/yomi-dict
