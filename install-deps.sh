@@ -84,7 +84,7 @@ ln -fs $dir/marmooo.github.io/docs/kanjivg touch-kanji/kanjivg
 
 # touch-shuji
 ln -fs $dir/graded-kanji-examples touch-shuji/graded-kanji-examples
-ln -fs $dir/marmooo.github.io/docs/animCJK touch-kanji/animCJK
+ln -fs $dir/marmooo.github.io/docs/animCJK touch-shuji/animCJK
 
 # kanji-typing
 ln -fs $dir/yomi-dict kanji-typing/yomi-dict
@@ -140,7 +140,6 @@ ln -fs $dir/cc.ja.300.vec siminym-ja/cc.ja.300.vec
 
 # siminym-en
 ln -fs $dir/mGSL siminym-en/mGSL
-ln -fs $dir/google-ngram-small-en siminym-en/google-ngram-small-en
 ln -fs $dir/crawl-300d-2M.vec siminym-en/crawl-300d-2M.vec
 
 # siminym-zh
@@ -149,8 +148,6 @@ ln -fs $dir/cc.zh.300.vec siminym-zh/cc.zh.300.vec
 
 # rensole-ja
 ln -fs $dir/SudachiDict rensole-ja/SudachiDict
-ln -fs $dir/nwc2010-ngrams rensole-ja/nwc2010-ngrams
-ln -fs $dir/inappropriate-words-ja rensole-ja/inappropriate-words-ja
 ln -fs $dir/cc.ja.300.vec rensole-ja/cc.ja.300.vec
 ln -fs $dir/siminym-ja/docs rensole-ja/siminym-ja
 
