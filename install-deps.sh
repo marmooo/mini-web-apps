@@ -1,5 +1,11 @@
 basedir=`pwd`
 
+# CLI
+sudo apt install minify
+npm install -g drop-inline-css
+deno install --allow-read --allow-write --allow-run \
+https://raw.githubusercontent.com/marmooo/yomico/main/src/yomico.js
+
 # Dict
 cd ..
 git clone git@github.com:marmooo/graded-enja-corpus
