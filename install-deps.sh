@@ -1,8 +1,11 @@
 basedir=`pwd`
 
 # CLI
-sudo apt install minify
+sudo apt install minify ripgrep fd-find
+# cargo install sd
 npm install -g drop-inline-css
+deno install --allow-read --allow-write --allow-run \
+https://raw.githubusercontent.com/marmooo/gitn/main/gitn.js
 deno install --allow-read --allow-write --allow-run \
 https://raw.githubusercontent.com/marmooo/yomico/main/src/yomico.js
 
@@ -100,6 +103,7 @@ ln -fs $dir/graded-idioms-ja graded-kanji-examples/graded-idioms-ja
 # kanji-dict
 ln -fs $dir/graded-vocab-ja kanji-dict/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja kanji-dict/graded-idioms-ja
+ln -fs $dir/marmooo.github.io/docs/kanjivg kanji-dict/kanjivg
 
 # homonym-ja
 ln -fs $dir/SudachiDict homonym-ja/SudachiDict
