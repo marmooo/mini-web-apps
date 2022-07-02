@@ -4,9 +4,9 @@ basedir=`pwd`
 sudo apt install minify ripgrep fd-find
 # cargo install sd
 npm install -g drop-inline-css
-deno install --allow-read --allow-write --allow-run \
+deno install -fr --allow-read --allow-write --allow-run --allow-env \
 https://raw.githubusercontent.com/marmooo/gitn/main/gitn.js
-deno install --allow-read --allow-write --allow-run \
+deno install -fr --allow-read --allow-write --allow-run \
 https://raw.githubusercontent.com/marmooo/yomico/main/src/yomico.js
 
 # Dict
