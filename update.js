@@ -156,6 +156,7 @@ switch (Deno.args[0]) {
   case "tfjs": {
     await updateTfjs("tfjs.lst");
     await updateServiceWorker("tfjs.lst");
+    await build("all.lst");
     const comment = "bump tfjs from 3.16.0 to 3.17.0";
     await $`gitn add .. tfjs.lst "*"`;
     await $`gitn commit .. tfjs.lst -m "${comment}"`;
@@ -167,6 +168,7 @@ switch (Deno.args[0]) {
     await updateBootstrapCss("all.lst");
     await updateBootstrapSwJs("all.lst");
     await updateServiceWorker("all.lst");
+    await build("all.lst");
     const comment = "bump bootstrap from 5.1.2 to 5.1.3";
     await $`gitn add .. all.lst "*"`;
     await $`gitn commit .. all.lst -m "${comment}"`;
@@ -177,6 +179,7 @@ switch (Deno.args[0]) {
     await updateSignaturePadJs("signature_pad.lst");
     await updateSignaturePadSwJs("signature_pad.lst");
     await updateServiceWorker("signature_pad.lst");
+    await build("signature_pad.lst");
     const comment = "bump signature_pad from 4.0.5 to 4.0.6";
     await $`gitn add .. signature_pad.lst "*"`;
     const result = await $`gitn commit .. signature_pad.lst -m "${comment}"`;
