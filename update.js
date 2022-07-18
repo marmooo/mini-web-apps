@@ -28,6 +28,7 @@ async function build(repoList) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`bash build.sh`;
   }
+  Deno.chdir(basedir);
 }
 
 async function grep(repoList, keyword, args) {
@@ -42,18 +43,19 @@ async function grep(repoList, keyword, args) {
       /* skip error */
     }
   }
+  Deno.chdir(basedir);
 }
 
 async function updateServiceWorker(repoList) {
   const timestamp = getTimestamp();
   const from = "^var CACHE_NAME.*$";
   const to = `var CACHE_NAME = "${timestamp}";`;
-  const basedir = Deno.cwd();
   const files = [
     "src/sw.js",
     "src/ja/sw.js",
     "src/en/sw.js",
   ];
+  const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -f m "${from}" '${to}' ${files.join(" ")}`;
@@ -69,6 +71,7 @@ async function updateTfjs(repoList) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`;
   }
+  Deno.chdir(basedir);
 }
 
 async function updateBootstrapJs(repoList) {
@@ -81,6 +84,7 @@ async function updateBootstrapJs(repoList) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
   }
+  Deno.chdir(basedir);
 }
 
 async function updateBootstrapCss(repoList) {
@@ -88,10 +92,12 @@ async function updateBootstrapCss(repoList) {
     '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">';
   const to =
     '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">';
+  const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
   }
+  Deno.chdir(basedir);
 }
 
 async function updateBootstrapSwJs(repoList) {
@@ -102,10 +108,39 @@ async function updateBootstrapSwJs(repoList) {
     "src/ja/sw.js",
     "src/en/sw.js",
   ];
+  const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -f m "${from}" ${to} ${files.join(" ")}`;
   }
+  Deno.chdir(basedir);
+}
+
+async function updateSignaturePadJs(repoList) {
+  const from = '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.5/dist/signature_pad.umd.min.js" integrity="sha256-DmYmpIUR97yasUhSuGMksoucIJaDfl2zDMpOrd4dNps=" crossorigin="anonymous"></script>';
+  const to = '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.6/dist/signature_pad.umd.min.js" integrity="sha256-+m3D7+nEQzP6tyb4trUMOfRLh3/NK370mPVpFR8kyYE=" crossorigin="anonymous"></script>';
+  const basedir = Deno.cwd();
+  for (const repoName of getRepos(repoList)) {
+    Deno.chdir(`${basedir}/../${repoName}`);
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
+  }
+  Deno.chdir(basedir);
+}
+
+async function updateSignaturePadSwJs(repoList) {
+  const from = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.5";
+  const to = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.6";
+  const files = [
+    "src/sw.js",
+    "src/ja/sw.js",
+    "src/en/sw.js",
+  ];
+  const basedir = Deno.cwd();
+  for (const repoName of getRepos(repoList)) {
+    Deno.chdir(`${basedir}/../${repoName}`);
+    await $`sd -f m "${from}" ${to} ${files.join(" ")}`;
+  }
+  Deno.chdir(basedir);
 }
 
 switch (Deno.args[0]) {
@@ -139,11 +174,13 @@ switch (Deno.args[0]) {
     break;
   }
   case "signature_pad": {
+    await updateSignaturePadJs("signature_pad.lst");
+    await updateSignaturePadSwJs("signature_pad.lst");
     await updateServiceWorker("signature_pad.lst");
     const comment = "bump signature_pad from 4.0.5 to 4.0.6";
     await $`gitn add .. signature_pad.lst "*"`;
     const result = await $`gitn commit .. signature_pad.lst -m "${comment}"`;
-    await $`gitn push .. signature_pad.lst`;
+    // await $`gitn push .. signature_pad.lst`;
     break;
   }
   case "help":
