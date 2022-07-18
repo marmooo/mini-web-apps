@@ -180,7 +180,7 @@ switch (Deno.args[0]) {
     const comment = "bump signature_pad from 4.0.5 to 4.0.6";
     await $`gitn add .. signature_pad.lst "*"`;
     const result = await $`gitn commit .. signature_pad.lst -m "${comment}"`;
-    // await $`gitn push .. signature_pad.lst`;
+    await $`gitn push .. signature_pad.lst`;
     break;
   }
   case "help":
