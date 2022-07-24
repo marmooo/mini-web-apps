@@ -14,7 +14,7 @@ bash install-deps.sh
 ```
 gitn pull .. all.lst
 deno run -A update.js build all.lst
-deno run -A update.js grep all.lst src/*
+deno run -A update.js grep all.lst keyword src/*
 deno run -A update.js sw.js tfjs.lst
 deno run -A update.js bootstrap
 ```
