@@ -59,6 +59,8 @@ gunzip -d cc.zh.300.vec.gz
 git clone git@github.com:MosasoM/inappropriate-words-ja
 git clone git@github.com:fxsjy/jieba
 
+git clone git@github.com:marmooo/icon-db
+
 
 # Link
 dir=`pwd`
@@ -165,5 +167,8 @@ ln -fs $dir/siminym-en/docs rensole-en/siminym-en
 ln -fs $dir/jieba rensole-zh/jieba
 ln -fs $dir/cc.zh.300.vec rensole-zh/cc.zh.300.vec
 ln -fs $dir/siminym-zh/docs rensole-zh/siminym-zh
+
+# icon-search
+ln -fs $dir/icon-db icon-search/icon-db
 
 cd $basedir
