@@ -88,6 +88,7 @@ async function updateBootstrapJs(repoList) {
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
+    await $`sd -s '${from}' '${to}' page.ejs`;
   }
   Deno.chdir(basedir);
 }
@@ -101,6 +102,7 @@ async function updateBootstrapCss(repoList) {
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
     await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
+    await $`sd -s '${from}' '${to}' page.ejs`;
   }
   Deno.chdir(basedir);
 }
@@ -112,11 +114,12 @@ async function updateBootstrapSwJs(repoList) {
     "src/sw.js",
     "src/ja/sw.js",
     "src/en/sw.js",
+    "page.ejs",
   ];
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -f m "${from}" ${to} ${files.join(" ")}`;
+    await $`sd -f m '${from}' '${to}' ${files.join(" ")}`;
   }
   Deno.chdir(basedir);
 }
