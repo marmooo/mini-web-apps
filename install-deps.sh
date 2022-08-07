@@ -91,6 +91,12 @@ ln -fs $dir/marmooo.github.io/docs/kanjivg touch-kanji/kanjivg
 ln -fs $dir/graded-kanji-examples touch-shuji/graded-kanji-examples
 ln -fs $dir/marmooo.github.io/docs/animCJK touch-shuji/animCJK
 
+# talk-yomi
+ln -fs $dir/graded-vocab-ja talk-yomi/graded-vocab-ja
+ln -fs $dir/graded-idioms-ja talk-yomi/graded-idioms-ja
+ln -fs $dir/yomi-dict talk-yomi/yomi-dict
+ln -fs $dir/SudachiDict talk-yomi/SudachiDict
+
 # kanji-typing
 ln -fs $dir/yomi-dict kanji-typing/yomi-dict
 ln -fs $dir/graded-vocab-ja kanji-typing/graded-vocab-ja
