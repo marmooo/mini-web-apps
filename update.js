@@ -69,8 +69,8 @@ async function updateServiceWorker(repoList) {
 }
 
 async function updateTfjs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.17.0";
-  const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.19.0";
+  const from = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.19.0";
+  const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.20.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
@@ -168,7 +168,7 @@ switch (Deno.args[0]) {
     await updateTfjs("tfjs.lst");
     await updateServiceWorker("tfjs.lst");
     await build("tfjs.lst");
-    const comment = "bump tfjs from 3.17.0 to 3.19.0";
+    const comment = "bump tfjs from 3.19.0 to 3.20.0";
     await $`gitn add .. tfjs.lst "*"`;
     await $`gitn commit .. tfjs.lst -m "${comment}"`;
     await $`gitn push .. tfjs.lst`;
