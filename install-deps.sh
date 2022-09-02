@@ -97,6 +97,17 @@ ln -fs $dir/graded-idioms-ja talk-yomi/graded-idioms-ja
 ln -fs $dir/yomi-dict talk-yomi/yomi-dict
 ln -fs $dir/SudachiDict talk-yomi/SudachiDict
 
+# tegaki-yomi
+ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
+ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
+ln -fs $dir/yomi-dict tegaki-kaki/yomi-dict
+
+# tegaki-kaki
+ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
+ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
+ln -fs $dir/yomi-dict tegaki-kaki/yomi-dict
+ln -fs $dir/wncc-ja tegaki-kaki/wncc-ja
+
 # kanji-typing
 ln -fs $dir/yomi-dict kanji-typing/yomi-dict
 ln -fs $dir/graded-vocab-ja kanji-typing/graded-vocab-ja
@@ -130,17 +141,6 @@ ln -fs $dir/inappropriate-words-ja graded-vocab-ja/inappropriate-words-ja
 ln -fs $dir/SudachiDict graded-idioms-ja/SudachiDict
 ln -fs $dir/nwc2010-ngrams graded-idioms-ja/nwc2010-ngrams
 ln -fs $dir/inappropriate-words-ja graded-idioms-ja/inappropriate-words-ja
-
-# tegaki-yomi
-ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
-ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
-ln -fs $dir/yomi-dict tegaki-kaki/yomi-dict
-
-# tegaki-kaki
-ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
-ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
-ln -fs $dir/yomi-dict tegaki-kaki/yomi-dict
-ln -fs $dir/wncc-ja tegaki-kaki/wncc-ja
 
 # speecha
 ln -fs $dir/graded-enja-corpus speecha/graded-enja-corpus
