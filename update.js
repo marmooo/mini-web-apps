@@ -126,10 +126,8 @@ async function updateBootstrapSwJs(repoList) {
 }
 
 async function updateSignaturePadJs(repoList) {
-  const from =
-    '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.6/dist/signature_pad.umd.min.js" integrity="sha256-+m3D7+nEQzP6tyb4trUMOfRLh3/NK370mPVpFR8kyYE=" crossorigin="anonymous"></script>';
-  const to =
-    '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.7/dist/signature_pad.umd.min.js" integrity="sha256-CMptYYXRcNVLvNSGRK6ZLrOBRO729Cg5aAC8l34V+nI=" crossorigin="anonymous"></script>';
+  const from = '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.8/dist/signature_pad.umd.min.js" integrity="sha256-kOZhAdQcFaWj0zJ4v1O4xtmfHR1BVhsiHRK956+maR0=" crossorigin="anonymous"></script>';
+  const to = '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.9/dist/signature_pad.umd.min.js" integrity="sha256-V9L8ML4alT7DUFydZZy5L4hgeRqhv+oj16TmyeMu4m8=" crossorigin="anonymous"></script>';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
@@ -139,8 +137,8 @@ async function updateSignaturePadJs(repoList) {
 }
 
 async function updateSignaturePadSwJs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.6";
-  const to = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.7";
+  const from = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.8";
+  const to = "https://cdn.jsdelivr.net/npm/signature_pad@4.0.9";
   const files = [
     "src/sw.js",
     "src/ja/sw.js",
@@ -191,7 +189,7 @@ switch (Deno.args[0]) {
     await updateSignaturePadSwJs("signature_pad.lst");
     await updateServiceWorker("signature_pad.lst");
     await build("signature_pad.lst");
-    const comment = "bump signature_pad from 4.0.6 to 4.0.7";
+    const comment = "bump signature_pad from 4.0.8 to 4.0.9";
     await $`gitn add .. signature_pad.lst "*"`;
     await $`gitn commit .. signature_pad.lst -m "${comment}"`;
     await $`gitn push .. signature_pad.lst`;
