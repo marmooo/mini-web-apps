@@ -102,6 +102,11 @@ ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
 ln -fs $dir/yomi-dict tegaki-kaki/yomi-dict
 
+# type-yomi
+ln -fs $dir/graded-vocab-ja type-yomi/graded-vocab-ja
+ln -fs $dir/graded-idioms-ja type-yomi/graded-idioms-ja
+ln -fs $dir/yomi-dict type-yomi/yomi-dict
+
 # tegaki-kaki
 ln -fs $dir/graded-vocab-ja tegaki-kaki/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja tegaki-kaki/graded-idioms-ja
