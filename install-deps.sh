@@ -60,6 +60,7 @@ git clone git@github.com:MosasoM/inappropriate-words-ja
 git clone git@github.com:fxsjy/jieba
 
 git clone git@github.com:marmooo/icon-db
+git clone git@github.com:marmooo/rare-icon-db
 
 
 # Link
