@@ -193,5 +193,6 @@ ln -fs $dir/siminym-zh/docs rensole-zh/siminym-zh
 
 # icon-search
 ln -fs $dir/icon-db icon-search/icon-db
+ln -fs $dir/icon-db icon-search/rare-icon-db
 
 cd $basedir
