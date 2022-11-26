@@ -3,7 +3,7 @@ basedir=`pwd`
 # CLI
 sudo apt install minify ripgrep fd-find
 # cargo install sd
-npm install -g drop-inline-css
+sudo npm install -g drop-inline-css
 deno install -fr --allow-read --allow-write --allow-run --allow-env \
 https://raw.githubusercontent.com/marmooo/gitn/main/gitn.js
 deno install -fr --allow-read --allow-write --allow-run \
