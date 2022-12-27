@@ -1,7 +1,7 @@
 basedir=`pwd`
 
 # CLI
-sudo apt install minify ripgrep fd-find
+sudo apt install minify ripgrep fd-find sqlite3
 # cargo install sd
 sudo npm install -g drop-inline-css
 deno install -fr --allow-read --allow-write --allow-run --allow-env \
