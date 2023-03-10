@@ -195,4 +195,8 @@ switch (Deno.args[0]) {
   case "--help":
   default:
     console.log("Usage: update.js [command] [repoList]");
+    console.log("Examples:");
+    console.log("  updates.js bootstrap");
+    console.log("  updates.js build tfjs.lst");
+    console.log("  updates.js grep all.lst title src/index.html");
 }
