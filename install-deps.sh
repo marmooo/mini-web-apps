@@ -11,6 +11,7 @@ https://raw.githubusercontent.com/marmooo/yomico/main/src/yomico.js
 
 # Dict
 cd ..
+git clone git@github.com:marmooo/tanaka-corpus-plus
 git clone git@github.com:marmooo/graded-enja-corpus
 git clone git@github.com:marmooo/graded-kanji-examples
 git clone git@github.com:marmooo/yomi-dict
@@ -79,6 +80,11 @@ ln -fs $dir/SudachiDict hayakuchi-ondoku/SudachiDict
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-50on/kanjivg
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-de-kakijun/kanjivg
 ln -fs $dir/yomi-dict emoji-typing/yomi-dict
+
+# graded-enja-corpus
+ln -fs $dir/mGSL graded-enja-corpus/mGSL
+ln -fs $dir/inappropriate-words-ja graded-enja-corpus/inappropriate-words-ja
+ln -fs $dir/tanaka-corpus-plus graded-enja-corpus/tanaka-corpus-plus
 
 # kanji-siritori
 ln -fs $dir/yomi-dict kanji-siritori/yomi-dict
