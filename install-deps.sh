@@ -68,7 +68,11 @@ git clone git@github.com:marmooo/rare-icon-db
 dir=`pwd`
 ln -fs $dir/mGSL vocabee/mGSL
 ln -fs $dir/mGSL english-words-typing/mGSL
+ln -fs $dir/graded-enja-corpus sentency/graded-enja-corpus
 ln -fs $dir/graded-enja-corpus english-sentences-typing/graded-enja-corpus
+ln -fs $dir/google-ngram-small-en gratalk/google-ngram-small-en
+ln -fs $dir/google-ngram-small-en wncc-en/google-ngram-small-en
+ln -fs $dir/nwc2010-ngrams wncc-ja/nwc2010-ngrams
 ln -fs $dir/graded-vocab-ja kana-meiro/graded-vocab-ja
 ln -fs $dir/graded-vocab-ja kana-sagashi/graded-vocab-ja
 ln -fs $dir/graded-vocab-ja kana-siritori/graded-vocab-ja
@@ -157,15 +161,6 @@ ln -fs $dir/inappropriate-words-ja graded-idioms-ja/inappropriate-words-ja
 # speecha
 ln -fs $dir/graded-enja-corpus speecha/graded-enja-corpus
 ln -fs $dir/google-ngram-small-en speecha/google-ngram-small-en
-
-# gratalk
-ln -fs $dir/google-ngram-small-en gratalk/google-ngram-small-en
-
-# wncc-ja
-ln -fs $dir/nwc2010-ngrams wncc-ja/nwc2010-ngrams
-
-# wncc-en
-ln -fs $dir/google-ngram-small-en wncc-en/google-ngram-small-en
 
 # siminym-ja
 ln -fs $dir/SudachiDict siminym-ja/SudachiDict
