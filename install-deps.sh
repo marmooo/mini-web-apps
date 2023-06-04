@@ -26,12 +26,6 @@ git lfs install
 git lfs pull
 cd ..
 
-wget http://iij.dl.sourceforge.jp/naist-jdic/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz
-tar xzf mecab-naist-jdic-0.6.3b-20111013.tar.gz
-cd mecab-naist-jdic-0.6.3b-20111013
-iconv -f euc-jp -t utf8 naist-jdic.csv > naist-jdic.utf8.csv
-cd ..
-
 wget https://s3-ap-northeast-1.amazonaws.com/nwc2010-ngrams/word/over999/filelist
 wget -xnH -i filelist
 rm filelist
@@ -142,11 +136,9 @@ ln -fs $dir/marmooo.github.io/docs/kanjivg kanji-dict/kanjivg
 
 # homonym-ja
 ln -fs $dir/SudachiDict homonym-ja/SudachiDict
-ln -fs $dir/mecab-naist-jdic-0.6.3b-20111013 homonym-ja/mecab-naist-jdic-0.6.3b-20111013
 
 # spelling-variants-ja
 ln -fs $dir/SudachiDict spelling-variants-ja/SudachiDict
-ln -fs $dir/mecab-naist-jdic-0.6.3b-20111013 spelling-variants-ja/mecab-naist-jdic-0.6.3b-20111013
 
 # graded-vocab-ja
 ln -fs $dir/SudachiDict graded-vocab-ja/SudachiDict
