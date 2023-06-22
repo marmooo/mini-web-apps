@@ -173,17 +173,20 @@ ln -fs $dir/cc.zh.300.vec siminym-zh/cc.zh.300.vec
 # rensole-ja
 ln -fs $dir/SudachiDict rensole-ja/SudachiDict
 ln -fs $dir/cc.ja.300.vec rensole-ja/cc.ja.300.vec
+ln -fs $dir/siminym-ja rensole-en/siminym-ja-repo
 ln -fs $dir/siminym-ja/docs rensole-ja/siminym-ja
 
 # rensole-en
 ln -fs $dir/mGSL rensole-en/mGSL
 ln -fs $dir/cmudict-ipa rensole-en/cmudict-ipa
 ln -fs $dir/crawl-300d-2M.vec rensole-en/crawl-300d-2M.vec
+ln -fs $dir/siminym-en rensole-en/siminym-en-repo
 ln -fs $dir/siminym-en/docs rensole-en/siminym-en
 
 # rensole-zh
 ln -fs $dir/jieba rensole-zh/jieba
 ln -fs $dir/cc.zh.300.vec rensole-zh/cc.zh.300.vec
+ln -fs $dir/siminym-zh rensole-en/siminym-zh-repo
 ln -fs $dir/siminym-zh/docs rensole-zh/siminym-zh
 
 # icon-search
