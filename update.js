@@ -174,7 +174,7 @@ switch (Deno.args[0]) {
     await updateBootstrapSwJs("all.lst");
     await updateServiceWorker("all.lst");
     await build("all.lst");
-    const comment = "bump bootstrap from 5.2.2 to 5.2.3";
+    const comment = "bump bootstrap from 5.2.3 to 5.3.0";
     await $`gitn add .. all.lst "*"`;
     await $`gitn commit .. all.lst -m "${comment}"`;
     await $`gitn push .. all.lst`;
