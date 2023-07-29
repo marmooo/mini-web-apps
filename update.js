@@ -3,7 +3,7 @@ import { $ } from "https://deno.land/x/deno_dx/mod.ts";
 function getTimestamp() {
   const date = new Date();
   date.setTime(date.getTime() + (9 * 60 * 60 * 1000));
-  const timestamp = date.toISOString().replace("T", " ").substr(0, 16);
+  const timestamp = date.toISOString().replace("T", " ").slice(0, 16);
   return timestamp;
 }
 
@@ -59,6 +59,7 @@ async function updateServiceWorker(repoList) {
     "src/sw.js",
     "src/ja/sw.js",
     "src/en/sw.js",
+    "src/zh/sw.js",
   ];
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
