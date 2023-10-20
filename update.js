@@ -81,8 +81,8 @@ async function updateTfjs(repoList) {
 }
 
 async function updateBootstrapJs(repoList) {
-  const from = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>';
-  const to = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>';
+  const from = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>';
+  const to = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
@@ -94,8 +94,8 @@ async function updateBootstrapJs(repoList) {
 }
 
 async function updateBootstrapCss(repoList) {
-  const from = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">';
-  const to = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">';
+  const from = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">';
+  const to = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
@@ -107,8 +107,8 @@ async function updateBootstrapCss(repoList) {
 }
 
 async function updateBootstrapSwJs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0";
-  const to = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1";
+  const from = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1";
+  const to = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2";
   const files = [
     "src/sw.js",
     "src/ja/sw.js",
@@ -175,7 +175,7 @@ switch (Deno.args[0]) {
     await updateBootstrapSwJs("all.lst");
     await updateServiceWorker("all.lst");
     await build("all.lst");
-    const comment = "bump bootstrap from 5.3.0 to 5.3.1";
+    const comment = "bump bootstrap from 5.3.1 to 5.3.2";
     await $`gitn add .. all.lst "*"`;
     await $`gitn commit .. all.lst -m "${comment}"`;
     await $`gitn push .. all.lst`;
