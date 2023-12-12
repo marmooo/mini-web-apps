@@ -1,4 +1,6 @@
 basedir=`pwd`
+cd ..
+dir=`pwd`
 
 # CLI
 sudo apt install minify ripgrep fd-find sqlite3
@@ -10,7 +12,6 @@ deno install -fr --allow-read --allow-write --allow-run \
 https://raw.githubusercontent.com/marmooo/yomico/main/src/yomico.js
 
 # Dict
-cd ..
 git clone git@github.com:marmooo/tanaka-corpus-plus
 git clone git@github.com:marmooo/graded-enja-corpus
 git clone git@github.com:marmooo/graded-kanji-examples
@@ -18,13 +19,15 @@ git clone git@github.com:marmooo/yomi-dict
 git clone git@github.com:marmooo/onkun
 git clone git@github.com:marmooo/cmu-dict-ipa
 
-
-sudo apt install git-lfs
 git clone git@github.com:WorksApplications/SudachiDict
-cd SudachiDict
-git lfs install
-git lfs pull
-cd ..
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/small_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/core_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/notcore_lex.zip
+cd SudachiDict/src/main/text
+unzip -o small_lex.zip
+unzip -o core_lex.zip
+unzip -o notcore_lex.zip
+cd $dir
 
 wget https://s3-ap-northeast-1.amazonaws.com/nwc2010-ngrams/word/over999/filelist
 wget -xnH -i filelist
@@ -59,7 +62,6 @@ git clone git@github.com:marmooo/rare-icon-db
 
 
 # Link
-dir=`pwd`
 ln -fs $dir/mGSL vocabee/mGSL
 ln -fs $dir/mGSL english-words-typing/mGSL
 ln -fs $dir/graded-enja-corpus sentency/graded-enja-corpus
