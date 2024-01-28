@@ -82,7 +82,8 @@ async function updateTfjs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`.quiet();
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`
+      .quiet();
   }
   Deno.chdir(basedir);
 }
@@ -95,7 +96,8 @@ async function updateBootstrapJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
+      .quiet();
     await $`sd -s '${from}' '${to}' page.eta`.quiet();
     await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
   }
@@ -110,7 +112,8 @@ async function updateBootstrapCss(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
+      .quiet();
     await $`sd -s '${from}' '${to}' page.eta`.quiet();
     await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
   }
@@ -141,7 +144,8 @@ async function updateSignaturePadJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
+      .quiet();
   }
   Deno.chdir(basedir);
 }
