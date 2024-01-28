@@ -1,4 +1,4 @@
-import { $ } from "https://deno.land/x/deno_dx@0.3.1/mod.ts";
+import { $ } from "npm:zx@7.2.3";
 
 function getTimestamp() {
   const date = new Date();
@@ -28,7 +28,7 @@ async function build(repoList) {
     Deno.chdir(`${basedir}/../${repoName}`);
     console.log(`%c${repoName}`, "font-weight: bold");
     try {
-      await $`bash build.sh`;
+      await $`bash build.sh`.quiet();
     } catch (err) {
       console.log(err);
     }
@@ -42,8 +42,8 @@ async function grep(repoList, keyword, args) {
     Deno.chdir(`${basedir}/../${repoName}`);
     console.log(`%c${repoName}`, "font-weight: bold");
     try {
-      const result = await $`rg --count ${keyword} ${args.join(" ")}`;
-      console.log(result);
+      const result = await $`rg --count ${keyword} ${args.join(" ")}`.quiet();
+      console.log(result.stdout);
     } catch (_err) {
       /* skip error */
     }
@@ -67,7 +67,7 @@ async function updateServiceWorker(repoList) {
     for (const file of files) {
       try {
         Deno.statSync(file);
-        await $`sd -f m "${from}" '${to}' ${file}`;
+        await $`sd -f m "${from}" '${to}' ${file}`.quiet();
       } catch {
         // skip
       }
@@ -77,12 +77,12 @@ async function updateServiceWorker(repoList) {
 }
 
 async function updateTfjs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0";
-  const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0";
+  const from = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0";
+  const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`;
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`.quiet();
   }
   Deno.chdir(basedir);
 }
@@ -95,9 +95,9 @@ async function updateBootstrapJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
-    await $`sd -s '${from}' '${to}' page.eta`;
-    await $`sd -s '${from}' '${to}' layouts/**/*`;
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
+    await $`sd -s '${from}' '${to}' page.eta`.quiet();
+    await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
   }
   Deno.chdir(basedir);
 }
@@ -110,9 +110,9 @@ async function updateBootstrapCss(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
-    await $`sd -s '${from}' '${to}' page.eta`;
-    await $`sd -s '${from}' '${to}' layouts/**/*`;
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
+    await $`sd -s '${from}' '${to}' page.eta`.quiet();
+    await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
   }
   Deno.chdir(basedir);
 }
@@ -128,7 +128,7 @@ async function updateBootstrapSwJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -f m '${from}' '${to}' ${files.join(" ")}`;
+    await $`sd -f m '${from}' '${to}' ${files.join(" ")}`.quiet();
   }
   Deno.chdir(basedir);
 }
@@ -141,7 +141,7 @@ async function updateSignaturePadJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`;
+    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`.quiet();
   }
   Deno.chdir(basedir);
 }
@@ -160,7 +160,7 @@ async function updateSignaturePadSwJs(repoList) {
     for (const file of files) {
       try {
         Deno.statSync(file);
-        await $`sd -f m "${from}" "${to}" ${file}`;
+        await $`sd -f m "${from}" "${to}" ${file}`.quiet();
       } catch {
         // skip
       }
@@ -183,10 +183,10 @@ switch (Deno.args[0]) {
     await updateTfjs("tfjs.lst");
     await updateServiceWorker("tfjs.lst");
     await build("tfjs.lst");
-    const comment = "bump tfjs from 4.13.0 to 4.15.0";
-    await $`gitn add .. tfjs.lst "*"`;
-    await $`gitn commit .. tfjs.lst -m "${comment}"`;
-    await $`gitn push .. tfjs.lst`;
+    const comment = "bump tfjs from 4.15.0 to 4.16.0";
+    await $`gitn add .. tfjs.lst "*"`.quiet();
+    await $`gitn commit .. tfjs.lst -m "${comment}"`.quiet();
+    await $`gitn push .. tfjs.lst`.quiet();
     break;
   }
   case "bootstrap": {
@@ -196,9 +196,9 @@ switch (Deno.args[0]) {
     await updateServiceWorker("all.lst");
     await build("all.lst");
     const comment = "bump bootstrap from 5.3.1 to 5.3.2";
-    await $`gitn add .. all.lst "*"`;
-    await $`gitn commit .. all.lst -m "${comment}"`;
-    await $`gitn push .. all.lst`;
+    await $`gitn add .. all.lst "*"`.quiet();
+    await $`gitn commit .. all.lst -m "${comment}"`.quiet();
+    await $`gitn push .. all.lst`.quiet();
     break;
   }
   case "signature_pad": {
@@ -207,9 +207,9 @@ switch (Deno.args[0]) {
     await updateServiceWorker("signature_pad.lst");
     await build("signature_pad.lst");
     const comment = "bump signature_pad from 4.1.6 to 4.1.7";
-    await $`gitn add .. signature_pad.lst "*"`;
-    await $`gitn commit .. signature_pad.lst -m "${comment}"`;
-    await $`gitn push .. signature_pad.lst`;
+    await $`gitn add .. signature_pad.lst "*"`.quiet();
+    await $`gitn commit .. signature_pad.lst -m "${comment}"`.quiet();
+    await $`gitn push .. signature_pad.lst`.quiet();
     break;
   }
   case "help":
