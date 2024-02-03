@@ -20,9 +20,9 @@ git clone git@github.com:marmooo/onkun
 git clone git@github.com:marmooo/cmu-dict-ipa
 
 git clone git@github.com:WorksApplications/SudachiDict
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/small_lex.zip
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/core_lex.zip
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230927/notcore_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/small_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/core_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/notcore_lex.zip
 cd SudachiDict/src/main/text
 unzip -o small_lex.zip
 unzip -o core_lex.zip
