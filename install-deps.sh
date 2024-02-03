@@ -20,6 +20,7 @@ git clone git@github.com:marmooo/onkun
 git clone git@github.com:marmooo/cmu-dict-ipa
 
 git clone git@github.com:WorksApplications/SudachiDict
+cd SudachiDict/src/main/text
 curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/small_lex.zip
 curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/core_lex.zip
 curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/notcore_lex.zip
