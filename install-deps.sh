@@ -83,6 +83,8 @@ ln -fs $dir/SudachiDict spelling-variants-ja/SudachiDict
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-50on/kanjivg
 ln -fs $dir/marmooo.github.io/docs/kanjivg touch-de-kakijun/kanjivg
 ln -fs $dir/marmooo.github.io/docs/svg number-icon/svg
+ln -fs $dir/marmooo.github.io/docs/svg number-emoji/svg
+ln -fs $dir/marmooo.github.io/docs/svg number-kanji/svg
 ln -fs $dir/yomi-dict emoji-typing/yomi-dict
 
 # graded-enja-corpus
