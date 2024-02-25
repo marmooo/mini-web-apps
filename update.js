@@ -58,7 +58,7 @@ async function updateServiceWorker(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`;
+    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
   }
   $.cwd = basedir;
 }
@@ -170,9 +170,9 @@ switch (Deno.args[0]) {
     await updateServiceWorker("all.lst");
     await build("all.lst");
     const comment = "bump bootstrap from 5.3.2 to 5.3.3";
-    await $`gitn add .. all.lst -A`;
+    await $`gitn add .. all.lst -A`.quiet();
     await $`gitn commit .. all.lst -m ${comment}`;
-    // await $`gitn push .. all.lst`.quiet();
+    await $`gitn push .. all.lst`.quiet();
     break;
   }
   case "signature_pad": {
