@@ -58,7 +58,7 @@ async function updateServiceWorker(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
+    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
   }
   $.cwd = basedir;
 }
@@ -113,7 +113,7 @@ async function updateBootstrapSwJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
+    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
   }
   $.cwd = basedir;
 }
@@ -138,7 +138,7 @@ async function updateSignaturePadSwJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
+    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
   }
   $.cwd = basedir;
 }
