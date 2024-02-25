@@ -25,7 +25,7 @@ function getRepos(repoList) {
 async function build(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
+    $.cwd = `${basedir}/../${repoName}`;
     console.log(`%c${repoName}`, "font-weight: bold");
     try {
       await $`bash build.sh`.quiet();
@@ -33,13 +33,13 @@ async function build(repoList) {
       console.log(err);
     }
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function grep(repoList, keyword, args) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
+    $.cwd = `${basedir}/../${repoName}`;
     console.log(`%c${repoName}`, "font-weight: bold");
     try {
       const result = await $`rg --count ${keyword} ${args.join(" ")}`.quiet();
@@ -48,32 +48,19 @@ async function grep(repoList, keyword, args) {
       /* skip error */
     }
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateServiceWorker(repoList) {
   const timestamp = getTimestamp();
-  const from = "^var CACHE_NAME.*$";
-  const to = `var CACHE_NAME = "${timestamp}";`;
-  const files = [
-    "src/sw.js",
-    "src/ja/sw.js",
-    "src/en/sw.js",
-    "src/zh/sw.js",
-  ];
+  const from = "^const CACHE_NAME.*$";
+  const to = `const CACHE_NAME = "${timestamp}";`;
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    for (const file of files) {
-      try {
-        Deno.statSync(file);
-        await $`sd -f m "${from}" '${to}' ${file}`.quiet();
-      } catch {
-        // skip
-      }
-    }
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`;
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateTfjs(repoList) {
@@ -81,59 +68,54 @@ async function updateTfjs(repoList) {
   const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e js -e html .)`
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p -e html -e js -x sd -s ${from} ${to}`
       .quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateBootstrapJs(repoList) {
   const from =
-    '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>';
-  const to =
     '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>';
+  const to =
+    '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
-      .quiet();
-    await $`sd -s '${from}' '${to}' page.eta`.quiet();
-    await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p -e html src -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind page.eta -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p -e eta eta -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p layouts -x sd -s ${from} ${to} {}`.quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateBootstrapCss(repoList) {
   const from =
-    '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">';
-  const to =
     '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">';
+  const to = 
+    '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
-      .quiet();
-    await $`sd -s '${from}' '${to}' page.eta`.quiet();
-    await $`sd -s '${from}' '${to}' layouts/**/*`.quiet();
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p -e html src -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind page.eta -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p -e eta eta -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p layouts -x sd -s ${from} ${to} {}`.quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateBootstrapSwJs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1";
-  const to = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2";
-  const files = [
-    "src/sw.js",
-    "src/ja/sw.js",
-    "src/en/sw.js",
-  ];
+  const from = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2";
+  const to = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -f m '${from}' '${to}' ${files.join(" ")}`.quiet();
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateSignaturePadJs(repoList) {
@@ -143,34 +125,22 @@ async function updateSignaturePadJs(repoList) {
     '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js" integrity="sha256-/8a/3YLn7UlBx9oXDxpq5L47fLEDb29g7bCWF6ho56Q=" crossorigin="anonymous"></script>';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    await $`sd -s '${from}' '${to}' $(fdfind --type file -e html . src)`
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p -e html src -x sd -s ${from} ${to}`
       .quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 async function updateSignaturePadSwJs(repoList) {
   const from = "https://cdn.jsdelivr.net/npm/signature_pad@4.1.6";
   const to = "https://cdn.jsdelivr.net/npm/signature_pad@4.1.7";
-  const files = [
-    "src/sw.js",
-    "src/ja/sw.js",
-    "src/en/sw.js",
-  ];
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
-    Deno.chdir(`${basedir}/../${repoName}`);
-    for (const file of files) {
-      try {
-        Deno.statSync(file);
-        await $`sd -f m "${from}" "${to}" ${file}`.quiet();
-      } catch {
-        // skip
-      }
-    }
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p sw.js src -x sd -f m ${from} ${to} {}`.quiet();
   }
-  Deno.chdir(basedir);
+  $.cwd = basedir;
 }
 
 switch (Deno.args[0]) {
@@ -188,8 +158,8 @@ switch (Deno.args[0]) {
     await updateServiceWorker("tfjs.lst");
     await build("tfjs.lst");
     const comment = "bump tfjs from 4.15.0 to 4.16.0";
-    await $`gitn add .. tfjs.lst "*"`.quiet();
-    await $`gitn commit .. tfjs.lst -m "${comment}"`.quiet();
+    await $`gitn add .. tfjs.lst -A`.quiet();
+    await $`gitn commit .. tfjs.lst -m ${comment}`.quiet();
     await $`gitn push .. tfjs.lst`.quiet();
     break;
   }
@@ -199,10 +169,10 @@ switch (Deno.args[0]) {
     await updateBootstrapSwJs("all.lst");
     await updateServiceWorker("all.lst");
     await build("all.lst");
-    const comment = "bump bootstrap from 5.3.1 to 5.3.2";
-    await $`gitn add .. all.lst "*"`.quiet();
-    await $`gitn commit .. all.lst -m "${comment}"`.quiet();
-    await $`gitn push .. all.lst`.quiet();
+    const comment = "bump bootstrap from 5.3.2 to 5.3.3";
+    await $`gitn add .. all.lst -A`;
+    await $`gitn commit .. all.lst -m ${comment}`;
+    // await $`gitn push .. all.lst`.quiet();
     break;
   }
   case "signature_pad": {
@@ -211,8 +181,8 @@ switch (Deno.args[0]) {
     await updateServiceWorker("signature_pad.lst");
     await build("signature_pad.lst");
     const comment = "bump signature_pad from 4.1.6 to 4.1.7";
-    await $`gitn add .. signature_pad.lst "*"`.quiet();
-    await $`gitn commit .. signature_pad.lst -m "${comment}"`.quiet();
+    await $`gitn add .. signature_pad.lst -A`.quiet();
+    await $`gitn commit .. signature_pad.lst -m ${comment}`.quiet();
     await $`gitn push .. signature_pad.lst`.quiet();
     break;
   }
