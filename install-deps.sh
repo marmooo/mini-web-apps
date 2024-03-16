@@ -85,6 +85,8 @@ ln -fs $dir/marmooo.github.io/docs/kanjivg touch-de-kakijun/kanjivg
 ln -fs $dir/marmooo.github.io/docs/svg number-icon/svg
 ln -fs $dir/marmooo.github.io/docs/svg number-emoji/svg
 ln -fs $dir/marmooo.github.io/docs/svg number-kanji/svg
+ln -fs $dir/marmooo.github.io/docs/svg plot-icon/svg
+ln -fs $dir/marmooo.github.io/docs/svg plot-kanji/svg
 ln -fs $dir/yomi-dict emoji-typing/yomi-dict
 
 # graded-enja-corpus
