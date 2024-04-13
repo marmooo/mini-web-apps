@@ -58,7 +58,8 @@ async function updateServiceWorker(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
+    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`
+      .quiet();
   }
   $.cwd = basedir;
 }
@@ -94,7 +95,7 @@ async function updateBootstrapJs(repoList) {
 async function updateBootstrapCss(repoList) {
   const from =
     '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">';
-  const to = 
+  const to =
     '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">';
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
@@ -113,32 +114,19 @@ async function updateBootstrapSwJs(repoList) {
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
-  }
-  $.cwd = basedir;
-}
-
-async function updateSignaturePadJs(repoList) {
-  const from =
-    '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js" integrity="sha256-9WGszpHeq3MpHIIm/4OJHXD88GiswTgHC78Oa1xulpg=" crossorigin="anonymous"></script>';
-  const to =
-    '<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js" integrity="sha256-/8a/3YLn7UlBx9oXDxpq5L47fLEDb29g7bCWF6ho56Q=" crossorigin="anonymous"></script>';
-  const basedir = Deno.cwd();
-  for (const repoName of getRepos(repoList)) {
-    $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p -e html src -x sd -s ${from} ${to}`
+    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`
       .quiet();
   }
   $.cwd = basedir;
 }
 
-async function updateSignaturePadSwJs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/signature_pad@4.1.6";
-  const to = "https://cdn.jsdelivr.net/npm/signature_pad@4.1.7";
+async function updateSignaturePadJs(repoList) {
+  const from = "signature_pad@4.1.7";
+  const to = "signature_pad@4.2.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p -e js src -x sd -s ${from} ${to}`.quiet();
   }
   $.cwd = basedir;
 }
@@ -177,10 +165,9 @@ switch (Deno.args[0]) {
   }
   case "signature_pad": {
     await updateSignaturePadJs("signature_pad.lst");
-    await updateSignaturePadSwJs("signature_pad.lst");
     await updateServiceWorker("signature_pad.lst");
     await build("signature_pad.lst");
-    const comment = "bump signature_pad from 4.1.6 to 4.1.7";
+    const comment = "bump signature_pad from 4.1.7 to 4.2.0";
     await $`gitn add .. signature_pad.lst -A`.quiet();
     await $`gitn commit .. signature_pad.lst -m ${comment}`.quiet();
     await $`gitn push .. signature_pad.lst`.quiet();
