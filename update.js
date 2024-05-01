@@ -64,18 +64,6 @@ async function updateServiceWorker(repoList) {
   $.cwd = basedir;
 }
 
-async function updateTfjs(repoList) {
-  const from = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0";
-  const to = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0";
-  const basedir = Deno.cwd();
-  for (const repoName of getRepos(repoList)) {
-    $.cwd = `${basedir}/../${repoName}`;
-    await $`fdfind -tf -p -e html -e js -x sd -s ${from} ${to}`
-      .quiet();
-  }
-  $.cwd = basedir;
-}
-
 async function updateBootstrapJs(repoList) {
   const from =
     '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>';
@@ -131,6 +119,17 @@ async function updateSignaturePadJs(repoList) {
   $.cwd = basedir;
 }
 
+async function updateTfjs(repoList) {
+  const from = "@tensorflow/tfjs@4.16.0";
+  const to = "@tensorflow/tfjs@4.18.0";
+  const basedir = Deno.cwd();
+  for (const repoName of getRepos(repoList)) {
+    $.cwd = `${basedir}/../${repoName}`;
+    await $`fdfind -tf -p -e js src -x sd -s ${from} ${to}`.quiet();
+  }
+  $.cwd = basedir;
+}
+
 switch (Deno.args[0]) {
   case "build":
     await build(Deno.args[1]);
@@ -145,7 +144,7 @@ switch (Deno.args[0]) {
     await updateTfjs("tfjs.lst");
     await updateServiceWorker("tfjs.lst");
     await build("tfjs.lst");
-    const comment = "bump tfjs from 4.15.0 to 4.16.0";
+    const comment = "bump tfjs from 4.16.0 to 4.18.0";
     await $`gitn add .. tfjs.lst -A`.quiet();
     await $`gitn commit .. tfjs.lst -m ${comment}`.quiet();
     await $`gitn push .. tfjs.lst`.quiet();
