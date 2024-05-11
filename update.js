@@ -120,8 +120,8 @@ async function updateSignaturePadJs(repoList) {
 }
 
 async function updateTfjs(repoList) {
-  const from = "@tensorflow/tfjs@4.16.0";
-  const to = "@tensorflow/tfjs@4.18.0";
+  const from = "@tensorflow/tfjs@4.18.0";
+  const to = "@tensorflow/tfjs@4.19.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
@@ -144,7 +144,7 @@ switch (Deno.args[0]) {
     await updateTfjs("tfjs.lst");
     await updateServiceWorker("tfjs.lst");
     await build("tfjs.lst");
-    const comment = "bump tfjs from 4.16.0 to 4.18.0";
+    const comment = "bump tfjs from 4.18.0 to 4.19.0";
     await $`gitn add .. tfjs.lst -A`.quiet();
     await $`gitn commit .. tfjs.lst -m ${comment}`.quiet();
     await $`gitn push .. tfjs.lst`.quiet();
