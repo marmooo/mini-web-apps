@@ -109,8 +109,8 @@ async function updateBootstrapSwJs(repoList) {
 }
 
 async function updateSignaturePadJs(repoList) {
-  const from = "signature_pad@4.1.7";
-  const to = "signature_pad@4.2.0";
+  const from = "signature_pad@4.2.0";
+  const to = "signature_pad@5.0.0";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
@@ -166,7 +166,7 @@ switch (Deno.args[0]) {
     await updateSignaturePadJs("signature_pad.lst");
     await updateServiceWorker("signature_pad.lst");
     await build("signature_pad.lst");
-    const comment = "bump signature_pad from 4.1.7 to 4.2.0";
+    const comment = "bump signature_pad from 4.2.0 to 5.0.0";
     await $`gitn add .. signature_pad.lst -A`.quiet();
     await $`gitn commit .. signature_pad.lst -m ${comment}`.quiet();
     await $`gitn push .. signature_pad.lst`.quiet();
