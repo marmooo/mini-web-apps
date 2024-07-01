@@ -161,6 +161,11 @@ ln -fs $dir/SudachiDict graded-idioms-ja/SudachiDict
 ln -fs $dir/nwc2010-ngrams graded-idioms-ja/nwc2010-ngrams
 ln -fs $dir/inappropriate-words-ja graded-idioms-ja/inappropriate-words-ja
 
+# nandoku
+ln -fs $dir/SudachiDict nandoku/SudachiDict
+ln -fs $dir/nwc2010-ngrams nandoku/nwc2010-ngrams
+ln -fs $dir/inappropriate-words-ja nandoku/inappropriate-words-ja
+
 # speecha
 ln -fs $dir/graded-enja-corpus speecha/graded-enja-corpus
 ln -fs $dir/google-ngram-small-en speecha/google-ngram-small-en
