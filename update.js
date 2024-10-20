@@ -1,4 +1,4 @@
-import { $ } from "npm:zx@8.1.3";
+import { $ } from "npm:zx@8.1.9";
 
 function getTimestamp() {
   const date = new Date();
