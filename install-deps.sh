@@ -21,9 +21,9 @@ git clone git@github.com:marmooo/cmu-dict-ipa
 
 git clone git@github.com:WorksApplications/SudachiDict
 cd SudachiDict/src/main/text
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/small_lex.zip
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/core_lex.zip
-curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/notcore_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20250129/small_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20250129/core_lex.zip
+curl -O http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20250129/notcore_lex.zip
 unzip -o small_lex.zip
 unzip -o core_lex.zip
 unzip -o notcore_lex.zip
@@ -140,6 +140,7 @@ ln -fs $dir/graded-vocab-ja graded-kanji-examples/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja graded-kanji-examples/graded-idioms-ja
 
 # kanji-dict
+ln -fs $dir/onkun kanji-dict/onkun
 ln -fs $dir/graded-vocab-ja kanji-dict/graded-vocab-ja
 ln -fs $dir/graded-idioms-ja kanji-dict/graded-idioms-ja
 ln -fs $dir/marmooo.github.io/docs/kanjivg kanji-dict/kanjivg
@@ -161,6 +162,8 @@ ln -fs $dir/nwc2010-ngrams graded-idioms-ja/nwc2010-ngrams
 ln -fs $dir/inappropriate-words-ja graded-idioms-ja/inappropriate-words-ja
 
 # nandoku
+ln -fs $dir/onkun nandoku/onkun
+ln -fs $dir/yomi-dict nandoku/yomi-dict
 ln -fs $dir/SudachiDict nandoku/SudachiDict
 ln -fs $dir/nwc2010-ngrams nandoku/nwc2010-ngrams
 ln -fs $dir/inappropriate-words-ja nandoku/inappropriate-words-ja
