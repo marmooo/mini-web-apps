@@ -71,11 +71,10 @@ async function updateBootstrap(repoList) {
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
     await $`fdfind -tf -p -e html src -x sd -s ${from} ${to} {}`.quiet();
-    await $`fdfind page.eta -x sd -s ${from} ${to} {}`.quiet();
+    await $`fdfind -tf -p -e js src -x sd -s ${from} ${to} {}`.quiet();
     await $`fdfind -tf -p -e eta eta -x sd -s ${from} ${to} {}`.quiet();
     await $`fdfind -tf -p layouts -x sd -s ${from} ${to} {}`.quiet();
-    await $`fdfind --glob -p **/src/**/sw.js -x sd -f m ${from} ${to} {}`
-      .quiet();
+    await $`fdfind page.eta -x sd -s ${from} ${to} {}`.quiet();
   }
   $.cwd = basedir;
 }
