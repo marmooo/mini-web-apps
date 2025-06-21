@@ -65,8 +65,8 @@ async function updateServiceWorker(repoList) {
 }
 
 async function updateBootstrap(repoList) {
-  const from = "bootstrap@5.3.5";
-  const to = "bootstrap@5.3.6";
+  const from = "bootstrap@5.3.6";
+  const to = "bootstrap@5.3.7";
   const basedir = Deno.cwd();
   for (const repoName of getRepos(repoList)) {
     $.cwd = `${basedir}/../${repoName}`;
@@ -125,7 +125,7 @@ switch (Deno.args[0]) {
     await updateBootstrap("all.lst");
     await updateServiceWorker("all.lst");
     await build("all.lst");
-    const comment = "bump bootstrap from 5.3.5 to 5.3.6";
+    const comment = "bump bootstrap from 5.3.6 to 5.3.7";
     await $`gitn add .. all.lst -A`.quiet();
     await $`gitn commit .. all.lst -m ${comment}`.quiet();
     await $`gitn push .. all.lst`.quiet();
