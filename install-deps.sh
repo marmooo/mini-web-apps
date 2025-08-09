@@ -64,9 +64,9 @@ git clone git@github.com:marmooo/rare-icon-db
 # Link
 ln -fs $dir/mGSL vocabee/mGSL
 ln -fs $dir/mGSL english-words-typing/mGSL
+ln -fs $dir/graded-enja-corpus speecha/graded-enja-corpus
 ln -fs $dir/graded-enja-corpus sentency/graded-enja-corpus
 ln -fs $dir/graded-enja-corpus english-sentences-typing/graded-enja-corpus
-ln -fs $dir/google-ngram-small-en gratalk/google-ngram-small-en
 ln -fs $dir/google-ngram-small-en wncc-en/google-ngram-small-en
 ln -fs $dir/nwc2010-ngrams wncc-ja/nwc2010-ngrams
 ln -fs $dir/graded-vocab-ja kana-meiro/graded-vocab-ja
@@ -167,10 +167,6 @@ ln -fs $dir/yomi-dict nandoku/yomi-dict
 ln -fs $dir/SudachiDict nandoku/SudachiDict
 ln -fs $dir/nwc2010-ngrams nandoku/nwc2010-ngrams
 ln -fs $dir/inappropriate-words-ja nandoku/inappropriate-words-ja
-
-# speecha
-ln -fs $dir/graded-enja-corpus speecha/graded-enja-corpus
-ln -fs $dir/google-ngram-small-en speecha/google-ngram-small-en
 
 # siminym-ja
 ln -fs $dir/SudachiDict siminym-ja/SudachiDict
