@@ -4,7 +4,7 @@
     "@geolonia/japanese-numeral": "npm:@geolonia/japanese-numeral@1.0.2",
     "@tensorflow/tfjs": "npm:@tensorflow/tfjs@4.22.0",
     "abcjs": "npm:abcjs@6.5.1",
-    "animate.css": "npm:animate.css@4.1.1",
+    "animate.css": "npm:animate.css@^4.1.1",
     "autocompleter": "npm:autocompleter@9.3.2",
     "bootstrap": "npm:bootstrap@5.3.8",
     "chart.js": "npm:chart.js@4.5.0",
