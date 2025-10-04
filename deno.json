@@ -21,6 +21,6 @@
     "sprintf-js": "npm:sprintf-js@1.1.3",
     "sql.js-httpvfs": "npm:sql.js-httpvfs@0.8.12",
     "vivus": "npm:vivus@0.4.6",
-    "zx": "npm:zx@8.8.1-lite"
+    "zx": "npm:zx@8.8.4-lite"
   }
 }
