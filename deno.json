@@ -12,7 +12,7 @@
     "eta": "npm:eta@3.5.0",
     "fabric": "npm:fabric@6.7.0",
     "giojs": "npm:giojs@2.2.2",
-    "highlight.js": "npm:highlight.js@^11.11.1",
+    "highlight.js": "npm:highlight.js@11.11.1",
     "image-compare-viewer": "npm:image-compare-viewer@1.6.2",
     "nosleep.js": "npm:nosleep.js@0.12.0",
     "number-to-words": "npm:number-to-words@1.2.4",
