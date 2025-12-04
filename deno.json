@@ -8,6 +8,7 @@
     "autocompleter": "npm:autocompleter@9.3.2",
     "bootstrap": "npm:bootstrap@5.3.8",
     "chart.js": "npm:chart.js@4.5.0",
+    "coi-serviceworker": "npm:coi-serviceworker@0.1.7",
     "draggabilly": "npm:draggabilly@3.0.0",
     "eta": "npm:eta@4.4.1",
     "fabric": "npm:fabric@6.7.1",
@@ -23,6 +24,7 @@
     "sql.js-httpvfs": "npm:sql.js-httpvfs@0.8.12",
     "svgo": "npm:svgo@4.0.0",
     "vivus": "npm:vivus@0.4.6",
+    "wasm-feature-detect": "npm:wasm-feature-detect@1.8.0",
     "zx": "npm:zx@8.8.4-lite"
   }
 }
