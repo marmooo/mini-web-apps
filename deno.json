@@ -12,7 +12,7 @@
     "coi-serviceworker": "npm:coi-serviceworker@0.1.7",
     "draggabilly": "npm:draggabilly@3.0.0",
     "eta": "npm:eta@4.4.1",
-    "fabric": "npm:fabric@7.0.0",
+    "fabric": "npm:fabric@7.1.0",
     "giojs": "npm:giojs@2.2.2",
     "highlight.js": "npm:highlight.js@11.11.1",
     "image-compare-viewer": "npm:image-compare-viewer@1.6.2",
