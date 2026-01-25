@@ -8,7 +8,7 @@
     "animate.css": "npm:animate.css@4.1.1",
     "autocompleter": "npm:autocompleter@9.3.2",
     "bootstrap": "npm:bootstrap@5.3.8",
-    "chart.js": "npm:chart.js@4.5.0",
+    "chart.js": "npm:chart.js@4.5.1",
     "coi-serviceworker": "npm:coi-serviceworker@0.1.7",
     "draggabilly": "npm:draggabilly@3.0.0",
     "eta": "npm:eta@4.4.1",
