@@ -26,7 +26,7 @@
     "svgo": "npm:svgo@4.1.0",
     "vivus": "npm:vivus@0.4.6",
     "wasm-feature-detect": "npm:wasm-feature-detect@1.8.0",
-    "zx": "npm:zx@8.8.4-lite",
+    "zx": "npm:zx@8.8.5-lite",
     "zxing-wasm": "npm:zxing-wasm@2.2.4"
   }
 }
