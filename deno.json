@@ -1,7 +1,7 @@
 {
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@0.12.0",
-    "@geolonia/japanese-numeral": "npm:@geolonia/japanese-numeral@1.0.2",
+    "@geolonia/japanese-numeral": "npm:@geolonia/japanese-numeral@1.1.0",
     "@tensorflow/tfjs": "npm:@tensorflow/tfjs@4.22.0",
     "@unpic/pixels": "jsr:@unpic/pixels@1.2.3",
     "abcjs": "npm:abcjs@6.7.1",
